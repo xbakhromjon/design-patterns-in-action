@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.util.Assert;
+import uz.bakhromjon.prototype.ProtoFalse;
+import uz.bakhromjon.prototype.ProtoTrue;
 import uz.bakhromjon.singleton.SingA;
 import uz.bakhromjon.singleton.SingB;
 
@@ -15,6 +17,22 @@ class DesignPatternsInActionApplicationTests {
     SingB singB1;
     @Autowired
     SingB singB2;
+
+    @Autowired
+    ProtoTrue true1;
+    @Autowired
+    ProtoTrue true2;
+
+    @Autowired
+    ProtoFalse false1;
+    @Autowired
+    ProtoFalse false2;
+
+    @Test
+    public void testProtoTypes() {
+        Assertions.assertSame(false1, false2);
+        Assertions.assertNotSame(true1, true2);
+    }
 
     @Test
     public void testSingletons() {
